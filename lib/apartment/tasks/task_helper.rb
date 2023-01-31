@@ -41,6 +41,7 @@ module Apartment
       strategy = Apartment.db_migrate_tenant_missing_strategy
       create_tenant(tenant_name) if strategy == :create_tenant
 
+      puts("Migrating #{tenant_name} tenant")
       Apartment::Migrator.migrate tenant_name
     rescue Apartment::TenantNotFound => e
       raise e if strategy == :raise_exception
