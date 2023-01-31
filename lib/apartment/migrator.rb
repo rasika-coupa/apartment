@@ -18,7 +18,7 @@ module Apartment
         else
           ActiveRecord::Base.connection.migration_context.migrate(version, &migration_scope_block)
         end
-        rescue StandardError => e
+      rescue StandardError => e
           puts "Error while migrating tenant: #{database}\n[#{e.class}] Exception=>#{e.message}\n\n#{e.backtrace}"
           raise e.class
       end
